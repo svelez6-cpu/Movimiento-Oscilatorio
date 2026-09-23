@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cuaderno de Física III - Movimiento Armónico Simple</title>
+    <meta
+      name="description"
+      content="Cuaderno completo de movimiento armónico simple con definiciones, ecuaciones, procedimientos, simulación interactiva estilo GeoGebra y bibliografía APA 7."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Libre+Baskerville:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']],
+          processEscapes: true,
+          packages: {'[+]': ['ams', 'newcommand']}
+        },
+        svg: { fontCache: 'global' }
+      };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/plotly.js-dist-min@2.35.2/plotly.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js"></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="cover" id="inicio">
+      </header>
+
+      <main id="book" class="book is-hidden">
+        <section class="page" data-index="0">
+          <div class="page-header"><span class="page-label">Página 01</span></div>
+          <h2>Índice de contenidos</h2>
+          <div class="toc-grid">
+            <ol>
+              <li>Portada</li>
+              <li>Mapa mental</li>
+              <li>Línea de tiempo</li>
+              <li>Reseña histórica</li>
+              <li>Conceptos y definiciones</li>
+              <li>Movimiento armónico simple</li>
+              <li>Cinemática del movimiento armónico simple</li>
+              <li>Relación entre variables del MAS</li>
+              <li>Simulación interactiva estilo GeoGebra</li>
+              <li>Ejemplo 1: amplitud, periodo y frecuencia</li>
+              <li>Continuación del ejemplo 1</li>
+              <li>Ejemplo 2: velocidad y aceleración en MAS</li>
+              <li>Continuación del ejemplo 2</li>
+              <li>Ejercicio adicional: frecuencia y constante elástica</li>
+              <li>Continuación del ejercicio adicional</li>
+              <li>Gráfica interactiva: $x(t)$, $v(t)$ y $a(t)$</li>
+              <li>Tabla de magnitudes</li>
+            </ol>
+          </div>
+        </section>
+
+        <section class="page toc-continuation" data-index="toc-continuation">
+          <div class="page-header"><span class="page-label">Página 01 (continuación)</span></div>
+          <h2>Índice de contenidos (continuación)</h2>
+          <div class="toc-grid">
+            <ol start="18">
+              <li>Ejercicio 1</li>
+              <li>Continuación del ejercicio 1</li>
+              <li>Ejercicio 2</li>
+              <li>Continuación del ejercicio 2</li>
+              <li>Ejercicio 4</li>
+              <li>Continuación del ejercicio 4</li>
+              <li>Ejercicio 10</li>
+              <li>Continuación del ejercicio 10</li>
+              <li>Ejercicio 17</li>
+              <li>Continuación del ejercicio 17</li>
+              <li>Gráficas adicionales del MAS</li>
+              <li>Glosario</li>
+              <li>Referencias bibliográficas</li>
+            </ol>
+          </div>
+        </section>
+
+        <section class="page" data-index="1">
+          <div class="page-header"><span class="page-label">Página 02</span></div>
+          <h2>Mapa mental</h2>
+          <div class="mindmap mindmap-page-two">
+            <svg class="mindmap-lines" viewBox="0 0 600 500" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+              <path d="M300 74 L300 96 L99 96 L99 108" />
+              <path d="M300 74 L300 108" />
+              <path d="M300 74 L300 96 L501 96 L501 108" />
+
+              <path d="M99 150 L99 180 L99 205" />
+              <path d="M99 150 L99 180 L207 180 L207 248" />
+              <path d="M300 150 L300 180 L300 205" />
+              <path d="M300 150 L300 180 L405 180 L405 248" />
+              <path d="M501 150 L501 180 L501 205" />
+              <path d="M501 150 L501 180 L501 248" />
+            </svg>
+
+            <div class="node root">Movimiento Armónico Simple</div>
+
+            <div class="node secondary secondary-left">Oscilación</div>
+            <div class="node secondary secondary-center">Elongación</div>
+            <div class="node secondary secondary-right">Ecuación</div>
+
+            <div class="node tertiary tertiary-left-1">Periodo</div>
+            <div class="node tertiary tertiary-left-2">Frecuencia</div>
+            <div class="node tertiary tertiary-center-1">Amplitud</div>
+            <div class="node tertiary tertiary-center-2">Fase</div>
+            <div class="node tertiary tertiary-right-1">Velocidad</div>
+            <div class="node tertiary tertiary-right-2">Aceleración</div>
+          </div>
+        </section>
+
+        <section class="page" data-index="2">
+          <div class="page-header"><span class="page-label">Página 03</span></div>
+          <h2>Línea de tiempo</h2>
+          <div class="timeline">
+            <div class="timeline-item"><span class="year">1583</span><p>Galileo Galilei observa la regularidad del péndulo y la oscilación.</p></div>
+            <div class="timeline-item"><span class="year">1656</span><p>Huygens formaliza el análisis matemático del movimiento periódico.</p></div>
+            <div class="timeline-item"><span class="year">1740</span><p>Se consolidan las primeras descripciones del movimiento vibratorio.</p></div>
+            <div class="timeline-item"><span class="year">1800s</span><p>Se desarrollan modelos más completos de frecuencia, energía y resonancia.</p></div>
+            <div class="timeline-item"><span class="year">1900s</span><p>El MAS se vuelve base para ondas, vibraciones y circuitos oscilatorios.</p></div>
+          </div>
+        </section>
+
+        <section class="page" data-index="3">
+          <div class="page-header"><span class="page-label">Página 04</span></div>
+          <h2>Reseña histórica</h2>
+          <p>El estudio del movimiento oscilatorio nació con la observación de péndulos, resortes y vibraciones naturales. Galileo fue pionero al notar la regularidad del periodo, mientras Huygens introdujo un análisis más preciso.</p>
+          <p>Con el desarrollo de la mecánica newtoniana y del cálculo, la oscilación se describió matemáticamente como una función trigonométrica. Así nació el movimiento armónico simple, que hoy se usa para explicar fenómenos como ondas, resonancia y vibraciones estructurales.</p>
+          <figure class="figure-card">
+            <div class="mini-illustration"><div class="pendulum"></div></div>
+            <figcaption>Figura 1. Péndulo clásico, ejemplo histórico de oscilación.</figcaption>
+          </figure>
+        </section>
+
+        <section class="page" data-index="4">
+          <div class="page-header"><span class="page-label">Página 05</span></div>
+          <h2>Conceptos y definiciones</h2>
+          <div class="info-cards">
+            <article class="info-card"><h3>Movimiento oscilatorio</h3><p>Movimiento repetitivo alrededor de una posición de equilibrio.</p></article>
+            <article class="info-card"><h3>Elongación</h3><p>Desplazamiento instantáneo respecto al equilibrio, $x(t)$.</p></article>
+            <article class="info-card"><h3>Amplitud</h3><p>Máximo valor de la elongación, denotado como $A$.</p></article>
+            <article class="info-card"><h3>Movimiento periódico</h3><p>Movimiento que se repite en intervalos iguales.</p></article>
+            <article class="info-card"><h3>Periodo</h3><p>Tiempo requerido para completar una oscilación completa, $T$.</p></article>
+            <article class="info-card"><h3>Frecuencia</h3><p>Número de oscilaciones por unidad de tiempo, $f = \frac{1}{T}$.</p></article>
+          </div>
+          <div class="formula-block">$$f = \frac{1}{T}$$<p>Donde $f$ se mide en $\text{Hz}$ y $T$ en segundos.</p></div>
+        </section>
+
+        <section class="page" data-index="5">
+          <div class="page-header"><span class="page-label">Página 06</span></div>
+          <h2>Movimiento armónico simple</h2>
+          <p>Un sistema experimenta movimiento armónico simple cuando su desplazamiento respecto a la posición de equilibrio varía sinusoidalmente con el tiempo. La fuerza restauradora es proporcional al desplazamiento.</p>
+          <div class="formula-block">$$x(t) = A\sin(\omega t + \phi)$$</div>
+          <ul class="key-list">
+            <li>$A$: amplitud</li>
+            <li>$\omega$: frecuencia angular</li>
+            <li>$\phi$: fase inicial</li>
+            <li>$t$: tiempo</li>
+          </ul>
+          <div class="equation-line">$$\omega = 2\pi f = \frac{2\pi}{T}$$</div>
+        </section>
+
+        <section class="page" data-index="6">
+          <div class="page-header"><span class="page-label">Página 07</span></div>
+          <h2>Cinemática del movimiento armónico simple</h2>
+          <div class="formula-stack">
+            <div class="formula-block">$$x(t) = A\sin(\omega t + \phi)$$</div>
+            <div class="formula-block">$$v(t) = \frac{dx}{dt} = A\omega\cos(\omega t + \phi)$$</div>
+            <div class="formula-block">$$a(t) = \frac{d^2x}{dt^2} = -A\omega^2\sin(\omega t + \phi)$$</div>
+          </div>
+          <p>La velocidad se adelanta $90^{\circ}$ respecto a la elongación y la aceleración se opone a la elongación. Esto explica su regularidad y repetición.</p>
+        </section>
+
+        <section class="page" data-index="7">
+          <div class="page-header"><span class="page-label">Página 08</span></div>
+          <h2>Relación entre variables del MAS</h2>
+          <p>En el movimiento armónico simple, la elongación, la velocidad y la aceleración están ligadas por la misma función trigonométrica.</p>
+          <div class="formula-block">$$x(t) = A\sin(\omega t + \phi)$$$$v(t) = A\omega\cos(\omega t + \phi)$$$$a(t) = -A\omega^2\sin(\omega t + \phi)$$</div>
+          <p>Cuando el cuerpo pasa por el equilibrio, la velocidad es máxima; en los extremos, la velocidad es cero y la aceleración alcanza su valor máximo en magnitud.</p>
+        </section>
+
+        <section class="page" data-index="8">
+          <div class="page-header"><span class="page-label">Página 09</span></div>
+          <h2>Simulación interactiva estilo GeoGebra</h2>
+          <p>Explora la oscilación, cambia la escala, arrastra el plano y ajusta opciones gráficas.</p>
+          <div class="graph-panel">
+            <div class="graph-toolbar" id="mainToolbar">
+              <button class="tool-btn" data-tool="zoom-out" aria-label="Alejar"><i data-lucide="zoom-out"></i></button>
+              <button class="tool-btn" data-tool="zoom-in" aria-label="Acercar"><i data-lucide="zoom-in"></i></button>
+              <button class="tool-btn" data-tool="pan" aria-label="Arrastrar"><i data-lucide="move"></i></button>
+              <button class="tool-btn" data-tool="reset" aria-label="Restablecer vista"><i data-lucide="rotate-ccw"></i></button>
+              <button class="tool-btn" data-tool="select" aria-label="Seleccionar objetos"><i data-lucide="mouse-pointer-click"></i></button>
+              <button class="tool-btn" data-tool="palette" aria-label="Estilos gráficos"><i data-lucide="palette"></i></button>
+            </div>
+            <div class="graph-style-panel hidden" id="style-panel">
+              <label>Color<input type="color" id="lineColor" value="#7c3aed" /></label>
+              <label>Grosor<input type="range" id="lineWidth" min="1" max="8" step="1" value="3" /></label>
+              <label>Línea<select id="lineStyle"><option value="solid">Sólida</option><option value="dashed">Discontinua</option><option value="dotted">Punteada</option></select></label>
+            </div>
+            <canvas id="graphCanvas" width="900" height="500"></canvas>
+          </div>
+        </section>
+
+        <section class="page" data-index="9">
+          <div class="page-header"><span class="page-label">Página 10</span></div>
+          <h2>Ejemplo 1: amplitud, periodo y frecuencia</h2>
+          <div class="exercise-step"><h3>1) Identificación de variables</h3><p><span class="data-word">Datos:</span> Un oscilador tiene un desplazamiento máximo de <span class="data-value">0,20 m</span> y tarda <span class="data-value">2,00 s</span> en completar una oscilación.</p><p><span class="incognita-word">Incógnitas:</span> amplitud, periodo y frecuencia.</p></div>
+          <div class="exercise-step"><h3>2) Fórmulas necesarias</h3><div class="formula-block">$$A = x_{max}$$$$T = \text{tiempo de una oscilación}$$$$f = \frac{1}{T}$$</div></div>
+          <div class="exercise-step"><h3>3) Reemplazo de datos</h3><p><span class="data-word">Datos:</span> $A = 0,20\,\text{m}$</p><p><span class="data-word">Datos:</span> $T = 2,00\,\text{s}$</p><div class="formula-block">$$f = \frac{1}{2,00\,\text{s}} = 0,50\,\text{Hz}$$</div></div>
+        </section>
+
+        <section class="page" data-index="10">
+          <div class="page-header"><span class="page-label">Página 11</span></div>
+          <h2>Ejemplo 1: amplitud, periodo y frecuencia (continuación)</h2>
+          <div class="exercise-step"><h3>4) Resultado</h3><p><span class="solved-word">Resultado:</span> La amplitud es <span class="solved-value">0,20 m</span>, el periodo es <span class="solved-value">2,00 s</span> y la frecuencia es <span class="solved-value">0,50 Hz</span>.</p></div>
+          <div class="exercise-step"><h3>5) Validación</h3><p>Al completar una oscilación cada 2 s, el sistema realiza 0,5 ciclos por segundo; esto es coherente con la definición de frecuencia.</p></div>
+        </section>
+
+        <section class="page" data-index="11">
+          <div class="page-header"><span class="page-label">Página 12</span></div>
+          <h2>Ejemplo 2: velocidad y aceleración en MAS</h2>
+          <div class="exercise-step"><h3>1) Identificación de variables</h3><p><span class="data-word">Datos:</span> $A = 0,30\,\text{m}$, $\omega = 4\,\text{rad/s}$, $t = 0,50\,\text{s}$, $\phi = 0$.</p><p><span class="incognita-word">Incógnitas:</span> $x$, $v$, $a$.</p></div>
+          <div class="exercise-step"><h3>2) Fórmulas necesarias</h3><div class="formula-block">$$x(t) = A\sin(\omega t + \phi)$$$$v(t) = A\omega\cos(\omega t + \phi)$$$$a(t) = -A\omega^2\sin(\omega t + \phi)$$</div></div>
+        </section>
+
+        <section class="page" data-index="12">
+          <div class="page-header"><span class="page-label">Página 13</span></div>
+          <h2>Ejemplo 2: velocidad y aceleración en MAS (continuación)</h2>
+          <div class="exercise-step"><h3>3) Reemplazo</h3><div class="formula-block">$$x = 0,30\sin(4\cdot0,50) = 0,30\sin(2,00) \approx 0,273\,\text{m}$$$$v = 0,30\cdot4\cdot\cos(2,00) \approx -0,499\,\text{m/s}$$$$a = -0,30\cdot4^2\cdot\sin(2,00) \approx -4,36\,\text{m/s}^2$$</div></div>
+          <div class="exercise-step"><h3>4) Validación</h3><p>La elongación es positiva, la velocidad es negativa y la aceleración también es negativa; esto confirma que el cuerpo se dirige hacia el origen mientras se aleja del extremo positivo.</p></div>
+        </section>
+
+        <section class="page" data-index="13">
+          <div class="page-header"><span class="page-label">Página 14</span></div>
+          <h2>Ejercicio adicional: frecuencia y constante elástica</h2>
+          <div class="exercise-step"><h3>1) Identificación de variables</h3><p><span class="data-word">Datos:</span> Un resorte tiene $k = 25\,\text{N/m}$ y una masa $m = 0,80\,\text{kg}$.</p><p><span class="incognita-word">Incógnitas:</span> frecuencia angular y frecuencia del sistema.</p></div>
+          <div class="exercise-step"><h3>2) Fórmulas necesarias</h3><div class="formula-block">$$\omega = \sqrt{\frac{k}{m}}$$$$f = \frac{\omega}{2\pi}$$</div></div>
+        </section>
+
+        <section class="page" data-index="14">
+          <div class="page-header"><span class="page-label">Página 15</span></div>
+          <h2>Ejercicio adicional: frecuencia y constante elástica (continuación)</h2>
+          <div class="exercise-step"><h3>3) Reemplazo</h3><div class="formula-block">$$\omega = \sqrt{\frac{25}{0,80}} = \sqrt{31,25} \approx 5,59\,\text{rad/s}$$$$f = \frac{5,59}{2\pi} \approx 0,89\,\text{Hz}$$</div></div>
+          <div class="exercise-step"><h3>4) Validación</h3><p>La frecuencia aumenta si la constante elástica aumenta o si la masa disminuye. En este caso, el sistema oscila casi una vez por segundo, lo que es coherente con el comportamiento del resorte.</p></div>
+        </section>
+
+        <section class="page" data-index="15">
+          <div class="page-header"><span class="page-label">Página 16</span></div>
+          <h2>Gráfica interactiva: $x(t)$, $v(t)$ y $a(t)$</h2>
+          <p>Desliza el tiempo para observar cómo cambian las tres magnitudes del MAS.</p>
+          <div class="graph-panel">
+            <div class="graph-toolbar" id="masToolbar">
+              <button class="tool-btn" data-tool="zoom-out" aria-label="Alejar"><i data-lucide="zoom-out"></i></button>
+              <button class="tool-btn" data-tool="zoom-in" aria-label="Acercar"><i data-lucide="zoom-in"></i></button>
+              <button class="tool-btn" data-tool="reset" aria-label="Restablecer vista"><i data-lucide="rotate-ccw"></i></button>
+              <button class="tool-btn" data-tool="palette" aria-label="Estilos gráficos"><i data-lucide="palette"></i></button>
+            </div>
+            <div class="graph-style-panel hidden" id="style-panel-2">
+              <label>Color de $x(t)$<input type="color" id="signalColor" value="#7c3aed" /></label>
+              <label>Color de $v(t)$<input type="color" id="velocityColor" value="#22c55e" /></label>
+              <label>Color de $a(t)$<input type="color" id="accelColor" value="#f97316" /></label>
+            </div>
+            <div class="time-slider-box"><label for="timeSlider">Tiempo</label><input id="timeSlider" type="range" min="-3.14" max="3.14" step="0.01" value="0" /><span id="timeValue">0.00 rad</span></div>
+            <canvas id="masCanvas" width="900" height="500"></canvas>
+          </div>
+        </section>
+
+        <section class="page" data-index="16">
+          <div class="page-header"><span class="page-label">Página 17</span></div>
+          <h2>Tabla de magnitudes</h2>
+          <table>
+            <thead><tr><th>Magnitud</th><th>Símbolo</th><th>Unidad SI</th><th>Descripción</th></tr></thead>
+            <tbody>
+              <tr><td>Elongación</td><td>$x$</td><td>m</td><td>Desplazamiento respecto del equilibrio.</td></tr>
+              <tr><td>Amplitud</td><td>$A$</td><td>m</td><td>Máximo desplazamiento.</td></tr>
+              <tr><td>Periodo</td><td>$T$</td><td>s</td><td>Tiempo de una oscilación completa.</td></tr>
+              <tr><td>Frecuencia</td><td>$f$</td><td>Hz</td><td>Oscilaciones por segundo.</td></tr>
+              <tr><td>Frecuencia angular</td><td>$\omega$</td><td>rad/s</td><td>Velocidad angular de la oscilación.</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="page" data-index="17">
+          <div class="page-header"><span class="page-label">Página 18</span></div>
+          <h2>Ejercicio 1</h2>
+          <div class="exercise-step">
+            <p><strong>Enunciado:</strong> Un bloque de 0,60 kg está unido a un resorte de constante 130 N/m. El resorte está extendido 0,13 m y el bloque se libera desde el reposo. Encontrar:</p>
+            <p>a) La fuerza sobre el bloque.<br>b) La aceleración.</p>
+            <p><strong>Datos</strong><br>m = 0,60 kg<br>k = 130 N/m<br>x = 0,13 m</p>
+            <p><strong>a) Fuerza</strong></p>
+            <p>Usamos la ley de Hooke:</p>
+            <div class="formula-block">$$F = -kx$$</div>
+            <p>Sustituimos:</p>
+            <div class="formula-block">$$F = -(130)(0,13)$$$$F = -16,9\,\text{N}$$</div>
+            <p>El signo negativo indica que la fuerza va en dirección contraria al estiramiento.</p>
+            <p><strong>Respuesta</strong></p>
+            <p>F = 16,9 N, dirigida hacia la posición de equilibrio.</p>
+          </div>
+        </section>
+
+        <section class="page" data-index="18">
+          <div class="page-header"><span class="page-label">Página 19</span></div>
+          <h2>Ejercicio 1 (continuación)</h2>
+          <div class="exercise-step">
+            <p><strong>b) Aceleración</strong></p>
+            <p>Usamos:</p>
+            <div class="formula-block">$$F = ma$$</div>
+            <p>Despejamos:</p>
+            <div class="formula-block">$$a = F/m$$</div>
+            <p>Sustituimos:</p>
+            <div class="formula-block">$$a = 16,9 / 0,60$$$$a = 28,2\,\text{m/s}^2$$</div>
+            <p><strong>Respuestas</strong><br>a) F = 16,9 N<br>b) a = 28,2 m/s²</p>
+          </div>
+        </section>
+
+        <section class="page" data-index="19">
+          <div class="page-header"><span class="page-label">Página 20</span></div>
+          <h2>Ejercicio 2</h2>
+          <div class="exercise-step">
+            <p>Un pistón se mueve con movimiento armónico simple. El motor funciona a 3600 rev/min y la amplitud del movimiento es 65,00 cm.</p>
+            <p>Encontrar:<br>a) velocidad máxima<br>b) aceleración máxima.</p>
+            <p><strong>Datos</strong><br>f = 3600 rev/min<br>A = 65,00 cm = 0,650 m</p>
+            <p>Primero convertimos la frecuencia:</p>
+            <div class="formula-block">$$f = 3600 / 60$$$$f = 60\,\text{Hz}$$</div>
+            <p>La frecuencia angular es:</p>
+            <div class="formula-block">$$\omega = 2\pi f$$</div>
+            <p>Entonces:</p>
+            <div class="formula-block">$$\omega = 2\pi(60)$$$$\omega = 376,99\,\text{rad/s}$$</div>
+            <p><strong>a) Velocidad máxima</strong></p>
+            <p>La fórmula es:</p>
+            <div class="formula-block">$$v_{\text{máx}} = \omega A$$</div>
+            <p>Sustituimos:</p>
+            <div class="formula-block">$$v_{\text{máx}} = (376,99)(0,650)$$$$v_{\text{máx}} \approx 245\,\text{m/s}$$</div>
+          </div>
+        </section>
+
+        <section class="page" data-index="20">
+          <div class="page-header"><span class="page-label">Página 21</span></div>
+          <h2>Ejercicio 2 (continuación)</h2>
+          <div class="exercise-step">
+            <p><strong>b) Aceleración máxima</strong></p>
+            <p>Usamos:</p>
+            <div class="formula-block">$$a_{\text{máx}} = \omega^2 A$$</div>
+            <p>Entonces:</p>
+            <div class="formula-block">$$a_{\text{máx}} = (376,99)^2(0,650)$$$$a_{\text{máx}} \approx 92\,400\,\text{m/s}^2$$</div>
+            <p><strong>Respuestas</strong><br>a) vₘáx ≈ 245 m/s<br>b) aₘáx ≈ 9,24 × 10⁴ m/s²</p>
+          </div>
+        </section>
+
+        <section class="page" data-index="21">
+          <div class="page-header"><span class="page-label">Página 22</span></div>
+          <h2>Ejercicio 4</h2>
+          <div class="exercise-step">
+            <p>Un objeto de 7,00 kg cuelga de un resorte vertical y oscila con un periodo de 2,60 s.</p>
+            <p>Encontrar la constante del resorte.</p>
+            <p><strong>Datos</strong><br>m = 7,00 kg<br>T = 2,60 s</p>
+            <p>Para un objeto unido a un resorte:</p>
+            <div class="formula-block">$$T = 2\pi \sqrt{m/k}$$</div>
+            <p>Queremos encontrar k, entonces:</p>
+            <div class="formula-block">$$k = 4\pi^2 m / T^2$$</div>
+            <p>Sustituimos:</p>
+            <div class="formula-block">$$k = [4\pi^2(7,00)] / (2,60)^2$$</div>
+          </div>
+        </section>
+
+        <section class="page" data-index="22">
+          <div class="page-header"><span class="page-label">Página 23</span></div>
+          <h2>Ejercicio 4 (continuación)</h2>
+          <div class="exercise-step">
+            <p>Primero:</p>
+            <div class="formula-block">$$(2,60)^2 = 6,76$$</div>
+            <p>Entonces:</p>
+            <div class="formula-block">$$k = 276,35 / 6,76$$$$k \approx 40,9\,\text{N/m}$$</div>
+            <p><strong>Respuesta</strong><br>k = 40,9 N/m</p>
+          </div>
+        </section>
+
+        <section class="page" data-index="23">
+          <div class="page-header"><span class="page-label">Página 24</span></div>
+          <h2>Ejercicio 10</h2>
+          <div class="exercise-step">
+            <p>Un automóvil de 1000 kg choca contra una pared. El parachoques se comporta como un resorte con:</p>
+            <p>k = 5,00 × 10⁶ N/m<br>x = 3,16 cm</p>
+            <p>Encontrar la rapidez del automóvil antes del impacto.</p>
+            <p><strong>Paso 1: Convertir centímetros a metros</strong></p>
+            <div class="formula-block">$$3,16\,\text{cm} = 0,0316\,\text{m}$$</div>
+            <p><strong>Paso 2: Conservación de la energía</strong></p>
+            <p>La energía cinética del automóvil se transforma en energía potencial del resorte:</p>
+            <div class="formula-block">$$\tfrac{1}{2}mv^2 = \tfrac{1}{2}kx^2$$</div>
+            <p>Los dos $\tfrac{1}{2}$ se cancelan:</p>
+            <div class="formula-block">$$mv^2 = kx^2$$</div>
+            <p>Despejamos:</p>
+            <div class="formula-block">$$v = x\sqrt{k/m}$$</div>
+          </div>
+        </section>
+
+        <section class="page" data-index="24">
+          <div class="page-header"><span class="page-label">Página 25</span></div>
+          <h2>Ejercicio 10 (continuación)</h2>
+          <div class="exercise-step">
+            <p><strong>Paso 3: Sustituimos</strong></p>
+            <div class="formula-block">$$v = (0,0316)\sqrt{(5,00 \times 10^6)/1000}$$</div>
+            <p>Primero:</p>
+            <div class="formula-block">$$(5,00 \times 10^6)/1000 = 5000$$</div>
+            <p>Entonces:</p>
+            <div class="formula-block">$$v = (0,0316)\sqrt{5000}$$$$\sqrt{5000} \approx 70,71$$</div>
+            <p>Por tanto:</p>
+            <div class="formula-block">$$v \approx (0,0316)(70,71)$$$$v \approx 2,24\,\text{m/s}$$</div>
+            <p><strong>Respuesta</strong><br>v ≈ 2,24 m/s</p>
+          </div>
+        </section>
+
+        <section class="page" data-index="25">
+          <div class="page-header"><span class="page-label">Página 26</span></div>
+          <h2>Ejercicio 17</h2>
+          <div class="exercise-step">
+            <p>Un péndulo simple realiza 120 oscilaciones completas en 3,00 minutos, en un lugar donde:</p>
+            <p>g = 9,80 m/s²</p>
+            <p>Encontrar:<br>a) el periodo<br>b) la longitud del péndulo.</p>
+            <p><strong>a) Periodo</strong></p>
+            <p>Primero convertimos:</p>
+            <div class="formula-block">$$3,00\,\text{min} = 180\,\text{s}$$</div>
+            <p>El periodo es el tiempo total dividido entre el número de oscilaciones:</p>
+            <div class="formula-block">$$T = 180 / 120$$$$T = 1,50\,\text{s}$$</div>
+            <p><strong>b) Longitud</strong></p>
+            <p>Para un péndulo simple:</p>
+            <div class="formula-block">$$T = 2\pi\sqrt{L/g}$$</div>
+            <p>Despejamos:</p>
+            <div class="formula-block">$$L = gT^2 / 4\pi^2$$</div>
+          </div>
+        </section>
+
+        <section class="page" data-index="26">
+          <div class="page-header"><span class="page-label">Página 27</span></div>
+          <h2>Ejercicio 17 (continuación)</h2>
+          <div class="exercise-step">
+            <p>Sustituimos:</p>
+            <div class="formula-block">$$L = (9,80)(1,50)^2 / 4\pi^2$$$$L = (9,80)(2,25) / 39,48$$$$L \approx 0,559\,\text{m}$$</div>
+            <p>Convertimos a centímetros:</p>
+            <div class="formula-block">$$0,559\,\text{m} = 55,9\,\text{cm}$$</div>
+            <p><strong>Respuestas</strong><br>a) T = 1,50 s<br>b) L = 0,559 m = 55,9 cm</p>
+          </div>
+          <figure class="figure-card">
+            <div class="mini-illustration"><div class="pendulum"></div></div>
+            <figcaption>Figura 2. Oscilación de un péndulo simple, ejemplo del movimiento armónico simple.</figcaption>
+          </figure>
+        </section>
+
+        <section class="page additional-graphs-page" data-index="27">
+          <div class="page-header"><span class="page-label">Página 28</span></div>
+          <h2>Gráficas adicionales del MAS</h2>
+          <p>Explora la energía del sistema y observa cómo se mueve una masa unida a un resorte.</p>
+          <div class="additional-graph-controls">
+            <label>Amplitud <input id="springAmplitude" type="range" min="0.5" max="3" step="0.1" value="1.8" /></label>
+            <label>Frecuencia <input id="springFrequency" type="range" min="0.5" max="3" step="0.1" value="1.2" /></label>
+            <span id="springReadout">A = 1.8 m | f = 1.2 Hz</span>
+          </div>
+          <div class="additional-graph-grid">
+            <div>
+              <h3>Energía del oscilador</h3>
+              <canvas id="energyCanvas" width="900" height="220"></canvas>
+            </div>
+            <div>
+              <h3>Sistema masa-resorte</h3>
+              <canvas id="springCanvas" width="900" height="220"></canvas>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" data-index="28">
+          <div class="page-header"><span class="page-label">Página 29</span></div>
+          <h2>Glosario</h2>
+          <div class="glossary-grid">
+            <div><strong>Amplitud:</strong> valor máximo del desplazamiento respecto al equilibrio.</div>
+            <div><strong>Elongación:</strong> posición instantánea del sistema respecto al equilibrio.</div>
+            <div><strong>Fase:</strong> posición del movimiento en el ciclo de oscilación.</div>
+            <div><strong>Frecuencia:</strong> número de oscilaciones por segundo.</div>
+            <div><strong>Periodo:</strong> tiempo que tarda el sistema en completar un ciclo.</div>
+            <div><strong>Oscilación:</strong> movimiento de ida y vuelta alrededor del equilibrio.</div>
+          </div>
+        </section>
+
+        <section class="page" data-index="29">
+          <div class="page-header"><span class="page-label">Página 30</span></div>
+          <h2>Referencias bibliográficas</h2>
+          <ol class="references">
+            <li>Serway, R. A., &amp; Jewett, J. W. (2018). <em>Physics for Scientists and Engineers</em> (10th ed.). Cengage Learning.</li>
+            <li>Halliday, D., Resnick, R., &amp; Walker, J. (2014). <em>Fundamentals of Physics</em> (10th ed.). Wiley.</li>
+            <li>Tipler, P. A., &amp; Mosca, G. (2008). <em>Physics for Scientists and Engineers</em> (6th ed.). W. H. Freeman.</li>
+            <li>Young, H. D., &amp; Freedman, R. A. (2020). <em>University Physics with Modern Physics</em> (15th ed.). Pearson.</li>
+          </ol>
+        </section>
+      </main>
+
+      <nav class="bottom-nav" aria-label="Navegación del cuaderno">
+        <button class="nav-btn" data-action="inicio"><i data-lucide="house"></i><span>Inicio</span></button>
+        <button class="nav-btn" data-action="prev"><i data-lucide="chevron-left"></i><span>Anterior</span></button>
+        <div class="page-indicator" id="pageIndicator">Portada</div>
+        <button class="nav-btn" data-action="next"><span>Siguiente</span><i data-lucide="chevron-right"></i></button>
+      </nav>
+
+      <footer class="footer-note">
+        Cuaderno creado por: Sara Velez Alzate, Jorge Alejandro Giraldo, Darlyn Dayana Zapata.
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
